@@ -42,3 +42,4 @@ function setData(n, c) {
   localStorage.setItem("data", JSON.stringify(data));
   return data;
 }
+//ok
