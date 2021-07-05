@@ -1,27 +1,52 @@
 <html>
   <head>
     <title>Learning js and html</title>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="main.css">
     <link rel="icon" href="bread logo.png" />
   </head>
 
-  <body>
-    <img src="bread logo.png" />
+  <body onload="insert()"> 
+    
+    <div class="jumbotron">
+      <h1 class="text-center">Name,Class Form</h1>
+      <h3 class="text-center">A Simple and Easy form maker.</h3> 
+    </div>
 
-    <h1>hi poop</h1>
-    <h3>go poop pls</h3>
-
-    <form onsubmit="return false">
-      <input type="text" required="true" id="name" />
-      <input type="text" required="true" id="class" />
-      <button onclick="insert()">Submit</button>
+    <form onsubmit="return false" class="col-md" >
+      <input type="text" class="form-control" required="true" id="name" />
+      <input type="text"  class="form-control" required="true" id="class" />
+      <button onclick="insert()" id="toggle" class="btn btn-danger">Submit</button>
     </form>
-    <table id="result">
-      <tr>
-        <td>name</td>
-        <td>class</td>
-      </tr>
+
+
+    <table id="result" class="table-striped table" >
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Class</td>
+        </tr>
+      </thead>
     </table>
+    <center>
+      
+      <button type="button" onclick="localStorage.clear() , alertmsg()"  class="btn btn-dark ">Click here to delete</button>
+
+    </center>
+    <button type="button" onclick="document.location='page2.html'" class="btn btn-dark ">Click me to enlarge form</button>
+    
+
+     
+    <div class="alert alert-success" id="ddenoiv" style="display: none;">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Added to form.</strong> 
+    </div>
+
+
+
   </body>
   <script src="script.js"></script>
 </html>
