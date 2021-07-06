@@ -2,7 +2,7 @@
 <!-- made by breadA [breadA#3012 (discord1d)] -->
 <html>
   <head>
-    <title>SFAT | Simple form and table</title>
+    <title>SFAT |シンプルなフォームとテーブル</title>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -20,8 +20,8 @@
   <!-- Jumbotron -->
   <body onload="clearfield(); insert()">
     <div class="jumbotron">
-      <h1 class="text-center">Name,Class Form</h1>
-      <h3 class="text-center">A Simple and Easy form maker.</h3>
+      <h1 class="text-center">名前、クラスフォーム</h1>
+      <h3 class="text-center">シンプルで簡単なフォームメーカー.</h3>
     </div>
     <!-- Jumbotron endcode -->
     <!-- Input, Submit-->
@@ -34,7 +34,7 @@
         onclick="insert()"
         class="btn btn-danger"
       >
-        Submit
+        参加する
       </button>
     </form>
     <!--  Input,submit end -->
@@ -43,10 +43,8 @@
     <table id="result" class="table-striped table">
       <thead>
         <tr>
-          <td>Name</td>
-          <td>Class</td>
-          <!-- This heading is for actions buttons that will be there for every record in table -->
-          <td>Action</td>
+          <td>名前</td>
+          <td>クラス</td>
         </tr>
       </thead>
     </table>
@@ -59,14 +57,12 @@
         onclick="localStorage.clear() , alertmsg()"
         class="btn btn-dark"
       >
-        Click here to delete
+        削除するにはここをクリック
       </button>
       <!-- delete table end-->
     </center>
     <!-- enlarge -->
-
     <!-- enlarge end -->
-
     <div class="dropdown">
       <button
         type="button"
@@ -81,7 +77,6 @@
         <a class="dropdown-item disabled" href="#">Coming soon</a>
       </div>
     </div>
-
     <!--TO DO: -->
     <div class="alert alert-success" id="div" style="display: none">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
