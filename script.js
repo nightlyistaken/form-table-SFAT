@@ -69,7 +69,7 @@ function clearfield() {
   document.getElementById("name").value = "";
   document.getElementById("class").value = "";
 }
-
+// change
 function save(){
 
   html2canvas(document.getElementById("result"), {
