@@ -26,28 +26,34 @@
     <!-- Jumbotron endcode -->
     <!-- Input, Submit-->
     <form class="col-md">
+      <h5>Name:</h3>
       <input type="text" class="form-control" required="true" id="name" />
+      <h5>Class:</h3>
+        
       <input type="text" class="form-control" required="true" id="class" />
+      <br>
       <button
         onsubmit="event. preventDefault()"
         type="submit"
         onclick="insert()"
-        class="btn btn-danger"
+        class="btn btn-danger btn-l"
       >
         Submit
       </button>
     </form>
     <!--  Input,submit end -->
-
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
     <!-- table -->
-    <table id="result" class="table-striped table">
+    <table id="result" class="table-striped table" style="background-color: white;">
       <thead>
+        <tbody>
         <tr>
           <td>Name</td>
           <td>Class</td>
           <!-- This heading is for actions buttons that will be there for every record in table -->
           <td>Action</td>
         </tr>
+      </tbody>
       </thead>
     </table>
     <!-- end table -->
@@ -81,12 +87,15 @@
         <a class="dropdown-item disabled" href="#">Coming soon</a>
       </div>
     </div>
-
+    <button type="button" onclick="save()"> Save</button>
+    <div id="img-display"></div>
     <!--TO DO: -->
     <div class="alert alert-success" id="div" style="display: none">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
       <strong>Added to form.</strong>
     </div>
   </body>
+  <script type="text/javascript" src="https://github.com/niklasvh/html2canvas/releases/download/0.5.0-alpha1/html2canvas.js"></script>
   <script src="script.js"></script>
+
 </html>
