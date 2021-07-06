@@ -25,16 +25,14 @@
     </div>
     <!-- Jumbotron endcode -->
     <!-- Input, Submit-->
-    <form class="col-md">
-      <h5>Name:</h3>
+    <form class="col-md" onsubmit="return false">
+      <h5>Name:</h5>
       <input type="text" class="form-control" required="true" id="name" />
-      <h5>Class:</h3>
+      <h5>Class:</h5>
         
       <input type="text" class="form-control" required="true" id="class" />
       <br>
       <button
-        onsubmit="event. preventDefault()"
-        type="submit"
         onclick="insert()"
         class="btn btn-danger btn-l"
       >
@@ -62,7 +60,7 @@
     <center>
       <button
         type="button"
-        onclick="localStorage.clear() , alertmsg()"
+        onclick="localStorage.clear() , rerenderTable()"
         class="btn btn-dark"
       >
         Click here to delete
@@ -90,8 +88,13 @@
     <button type="button" onclick="save()"> Save</button>
     <div id="img-display"></div>
     <!--TO DO: -->
+    <div class="alert alert-danger" id="errorbox" style="display: none">
+      
+      <strong>Record already exists</strong>
+    </div>
+    <br>
     <div class="alert alert-success" id="div" style="display: none">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      
       <strong>Added to form.</strong>
     </div>
   </body>

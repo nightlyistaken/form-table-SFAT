@@ -6,7 +6,7 @@ function deleteData(firstName) {
   data = JSON.parse(data);
   const updatedData = data.filter((v) => v.firstName !== firstName);
   localStorage.setItem("data", JSON.stringify(updatedData));
-  location.reload();
+  rerenderTable();
 }
 
 function insert() {
@@ -43,8 +43,9 @@ function insert() {
   }
 }
 //
-function alertmsg() {
-  location.reload();
+function rerenderTable() {
+  clearfield(); 
+  insert();
 }
 
 // This function sets data into localStorage and re-renders the table
@@ -56,13 +57,24 @@ function setData(n, c) {
   } else {
     data = JSON.parse(data);
   }
+  
+  if(data.find(v => v.firstName == n)) {
+    const errorBox = document.getElementById("errorbox");
 
-  console.log("data", data);
-  if (n && c) {
-    data.push({ firstName: n, className: c });
+    if (errorBox.style.display !== "none") {
+      errorBox.style.display = "none";
+    } else {
+      errorBox.style.display = "block";
+    }
+    return null;
+  } else {
+    console.log("data", data);
+    if (n && c) {
+      data.push({ firstName: n, className: c });
+    }
+    localStorage.setItem("data", JSON.stringify(data));
+    return data;
   }
-  localStorage.setItem("data", JSON.stringify(data));
-  return data;
 }
 
 function clearfield() {
@@ -70,22 +82,21 @@ function clearfield() {
   document.getElementById("class").value = "";
 }
 // change
-function save(){
-
+function save() {
   html2canvas(document.getElementById("result"), {
-    onrendered: function(canvas) {
-        var img = canvas.toDataURL("image/png");
-        const imageDiv = document.getElementById("img-display");
-        imageDiv.innerHTML = '<a download="SFAT Table Save.png" href="'+img+'">test</a>';
-    }
+    onrendered: function (canvas) {
+      var img = canvas.toDataURL("image/png");
+      const imageDiv = document.getElementById("img-display");
+      imageDiv.innerHTML =
+        '<a download="SFAT Table Save.png" href="' + img + '">test</a>';
+    },
   });
-
 }
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
+$(document).ready(function () {
+  $("#myInput").on("keyup", function () {
     var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    $("#myTable tr").filter(function () {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
     });
   });
 });
