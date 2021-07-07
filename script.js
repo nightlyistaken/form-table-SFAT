@@ -20,7 +20,7 @@ function editData(firstName, updatedFirstName, updatedClass) {
 
   // data.filter => pass a function
   const existingRecord = data.find(
-    (v) => v.firstName == document.getElementById("inputUpdate").value
+    (v) => v.firstName == document.getElementById("inputUpdate").value,
   );
   if (existingRecord) {
     existingRecord.firstName = updatedFirstName;
@@ -42,8 +42,7 @@ function insert() {
   let new_table =
     "<thead>  <tr>  <td>Name</td> <td>Class</td> <td>Action</td></tr></thead>";
   data.forEach((e) => {
-    new_table =
-      new_table +
+    new_table = new_table +
       "<tbody id='myTable'> <tr><td>" +
       e.firstName +
       "</td><td>" +
@@ -52,11 +51,10 @@ function insert() {
       "<button class= 'btn btn-outline-danger btn-sm ' onclick='deleteData(\"" +
       e.firstName +
       "\")'> Delete </button>" +
-      
       "<button onclick='editData();'> ok </button>" +
       "</td></tr></tbody>";
   });
- // help
+  // help
   htmlTable.innerHTML = new_table;
 
   const targetDiv = document.getElementById("div");
