@@ -14,17 +14,30 @@ function deleteData(firstName) {
   rerenderTable();
 }
 
-function editData(firstName, updatedFirstName, updatedClass) {
+function editFirstName(firstName) {
   let data = localStorage.getItem("data"); // JSON String = "{ 'name': 'Hello' }"
   data = JSON.parse(data); // Converts JSON String into JS object
 
   // data.filter => pass a function
-  const existingRecord = data.find(
-    (v) => v.firstName == document.getElementById("inputUpdate").value,
-  );
+  const existingRecord = data.find((v) => v.firstName == firstName);
   if (existingRecord) {
-    existingRecord.firstName = updatedFirstName;
-    existingRecord.className = updatedClass;
+    existingRecord.firstName = document.getElementById("inputUpdate").value;
+  }
+
+  // Set data back to storage
+  localStorage.setItem("data", JSON.stringify(data));
+  // Rerender table
+  rerenderTable();
+}
+
+function editClass(className) {
+  let data = localStorage.getItem("data"); // JSON String = "{ 'name': 'Hello' }"
+  data = JSON.parse(data); // Converts JSON String into JS object
+
+  // data.filter => pass a function
+  const existingRecord = data.find((v) => v.className == className);
+  if (existingRecord) {
+    existingRecord.className = document.getElementById("classNameUpdate").value;
   }
 
   // Set data back to storage
@@ -40,7 +53,7 @@ function insert() {
 
   let htmlTable = document.getElementById("result");
   let new_table =
-    "<thead>  <tr>  <td>Name</td> <td>Class</td> <td>Action</td></tr></thead>";
+    "<thead>  <tr>  <td><center>Name</center></td> <td><center>Class</center></td> <td><center>Action</center></td></tr></thead>";
   data.forEach((e) => {
     new_table = new_table +
       "<tbody id='myTable'> <tr><td>" +
@@ -51,10 +64,15 @@ function insert() {
       "<button class= 'btn btn-outline-danger btn-sm ' onclick='deleteData(\"" +
       e.firstName +
       "\")'> Delete </button>" +
-      "<button onclick='editData();'> ok </button>" +
+      "<button onclick='editFirstName(\"" +
+      e.firstName +
+      "\");' class= 'btn btn-outline-info btn-sm ' style='margin:7px; padding=10px;'> Save FirstName </button>" +
+      "<button onclick='editClass(\"" +
+      e.className +
+      "\");' class= 'btn btn-outline-info btn-sm ' style='margin:7px; padding=10px;'> Save ClassName </button>" +
       "</td></tr></tbody>";
   });
-  // help
+
   htmlTable.innerHTML = new_table;
 
   const targetDiv = document.getElementById("div");
