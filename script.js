@@ -2,10 +2,34 @@
 // for the whole form
 
 function deleteData(firstName) {
-  let data = localStorage.getItem("data");
-  data = JSON.parse(data);
+  let data = localStorage.getItem("data"); // JSON String = "{ 'name': 'Hello' }"
+  data = JSON.parse(data); // Converts JSON String into JS object
+
+  // data.filter => pass a function
   const updatedData = data.filter((v) => v.firstName !== firstName);
+
+  // Set data back to storage
   localStorage.setItem("data", JSON.stringify(updatedData));
+  // Rerender table
+  rerenderTable();
+}
+
+function editData(firstName, updatedFirstName, updatedClass) {
+  let data = localStorage.getItem("data"); // JSON String = "{ 'name': 'Hello' }"
+  data = JSON.parse(data); // Converts JSON String into JS object
+
+  // data.filter => pass a function
+  const existingRecord = data.find(
+    (v) => v.firstName == document.getElementById("inputUpdate").value
+  );
+  if (existingRecord) {
+    existingRecord.firstName = updatedFirstName;
+    existingRecord.className = updatedClass;
+  }
+
+  // Set data back to storage
+  localStorage.setItem("data", JSON.stringify(data));
+  // Rerender table
   rerenderTable();
 }
 
@@ -28,9 +52,11 @@ function insert() {
       "<button class= 'btn btn-outline-danger btn-sm ' onclick='deleteData(\"" +
       e.firstName +
       "\")'> Delete </button>" +
+      
+      "<button onclick='editData();'> ok </button>" +
       "</td></tr></tbody>";
   });
-
+ // help
   htmlTable.innerHTML = new_table;
 
   const targetDiv = document.getElementById("div");
@@ -44,7 +70,7 @@ function insert() {
 }
 //
 function rerenderTable() {
-  clearfield(); 
+  clearfield();
   insert();
 }
 
@@ -57,8 +83,8 @@ function setData(n, c) {
   } else {
     data = JSON.parse(data);
   }
-  
-  if(data.find(v => v.firstName == n)) {
+
+  if (data.find((v) => v.firstName == n)) {
     const errorBox = document.getElementById("errorbox");
 
     if (errorBox.style.display !== "none") {
@@ -88,7 +114,9 @@ function save() {
       var img = canvas.toDataURL("image/png");
       const imageDiv = document.getElementById("img-display");
       imageDiv.innerHTML =
-        '<a download="SFAT Table Save.png" href="' + img + '">test</a>';
+        ' <br><center><a download="SFAT Table Save.png" href="' +
+        img +
+        '" class="btn btn-dark">Click me to download</a> </center>';
     },
   });
 }
@@ -100,3 +128,11 @@ $(document).ready(function () {
     });
   });
 });
+
+$(document).ready(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
+
+function areyousure() {
+  alert("All cells deleted.");
+}

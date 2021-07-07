@@ -18,15 +18,27 @@
     <link rel="icon" class="fa-solid" />
   </head>
   <!-- Jumbotron -->
-  <body onload="clearfield(); insert()">
+  <body onload="clearfield(); insert()" >
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+      <a class="navbar-brand" href="#">Logo</a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+      </ul>
+    </nav>
+<br> <br>       
     <div class="jumbotron">
       <h1 class="text-center">Name,Class Form</h1>
       <h3 class="text-center">A Simple and Easy form maker.</h3>
     </div>
     <!-- Jumbotron endcode -->
     <!-- Input, Submit-->
-    <form class="col-md" onsubmit="return false">
-      <h5>Name:</h5>
+    <form class="col-md" onsubmit="return false" class="container-fluid">
+      <h5>Name: <span class="badge badge-secondary">New</span></h5>
       <input type="text" class="form-control" required="true" id="name" />
       <h5>Class:</h5>
         
@@ -42,7 +54,7 @@
     <!--  Input,submit end -->
     <input class="form-control" id="myInput" type="text" placeholder="Search..">
     <!-- table -->
-    <table id="result" class="table-striped table" style="background-color: white;">
+    <table id="result" class="table " style="background-color: rgb(250, 244, 244);">
       <thead>
         <tbody>
         <tr>
@@ -60,10 +72,12 @@
     <center>
       <button
         type="button"
-        onclick="localStorage.clear() , rerenderTable()"
-        class="btn btn-dark"
-      >
-        Click here to delete
+        onclick="localStorage.clear() , rerenderTable(); areyousure()"
+        class="btn btn-dark ;"
+        data-toggle="tooltip" title="Click this button only if you want to delete all the cells"
+        data-placement="bottom"
+        >
+        Click here to delete ALL 
       </button>
       <!-- delete table end-->
     </center>
@@ -85,9 +99,15 @@
         <a class="dropdown-item disabled" href="#">Coming soon</a>
       </div>
     </div>
-    <button type="button" onclick="save()"> Save</button>
+    <center>
+    <button type="button" onclick="save()" class="btn btn-dark "> Save</button>
+  </center>
     <div id="img-display"></div>
-    <!--TO DO: -->
+
+    <input id="inputUpdate">
+
+
+    <!--TO DO: Done after 38 mins -->
     <div class="alert alert-danger" id="errorbox" style="display: none">
       
       <strong>Record already exists</strong>
@@ -97,8 +117,13 @@
       
       <strong>Added to form.</strong>
     </div>
+
+  
+
   </body>
   <script type="text/javascript" src="https://github.com/niklasvh/html2canvas/releases/download/0.5.0-alpha1/html2canvas.js"></script>
   <script src="script.js"></script>
 
 </html>
+
+
