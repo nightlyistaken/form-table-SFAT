@@ -1,8 +1,12 @@
-# SFAT (Simple Fast Form And table)
+## Simple Fast Form And Table
+<img src="main-logo.png" alt="drawing" width="600" style="border-radius:50%" />
 
-made by @littledivy --- divy-work , @BreadA--- dhairy-online
+#### Clone the repo:
+```sh
+git clone https://github.com/dhairy-online/form-table-SFAT.git
 
-my discord- breadA#3012
+```
 
-thank you.
-![sfat](finalSFAT.png)
+##### My discord- breadA#3012
+
+## TSYM for reading this repo!
