@@ -14,7 +14,7 @@ git clone https://github.com/dhairy-online/form-table-SFAT.git
 ## Authors
 
 - [@breadA](https://www.github.com/dhairy-online)
-- [@litledivy](https://www.github.com/littledivy)
+
 
 ---
 #### License:
